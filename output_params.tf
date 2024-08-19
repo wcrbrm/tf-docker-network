@@ -6,9 +6,9 @@ output "params" {
     workspace = var.workspace,
     env = var.env
     log_opts = var.log_opts
-    labels = [{
+    labels = concat([{
       label = "project"
       value = var.project
-    }],
+    }], var.labels),
   })
 }
