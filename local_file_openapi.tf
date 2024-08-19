@@ -2,6 +2,16 @@ resource "local_file" "openapi" {
    content = <<EOF
 #!/usr/bin/env bash
 
+#
+# this script looks through every running docker container of the project
+# to find if it has a command to retrieve OpenAPI JSON in its labels
+#
+# if so, it executes this command and prints the content of the OpenAPI JSON
+# in a summary format
+#
+# Usage: ./bin/openapi.sh
+#
+
 export P=$${PROJECT:-${var.project}}
 docker ps --filter label=project=$P --filter label=openapi.enable=true --format json | jq -r '[.Names, .Labels] | @tsv' | while read ROW; do
     # name is the first word in the string

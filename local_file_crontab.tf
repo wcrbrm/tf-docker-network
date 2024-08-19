@@ -1,6 +1,15 @@
 resource "local_file" "crontab" {
    content = <<EOF
 #!/usr/bin/env bash
+
+#
+# This script ./bin/crontab.sh  is used to install or clean crontab files
+# gathered from different terraform modules in ./cron.d/ folder of the workspace
+#
+# Must be executed with sudo
+# Usage: sudo ./bin/crontab.sh clean init
+#
+
 if [[ $UID != 0 ]]; then
     echo "Please run this script with sudo:"
     echo "sudo $0 $*"
@@ -11,6 +20,7 @@ fi
   ls -All /etc/cron.d/crontab_*  
   rm -rf /etc/cron.d/crontab_*
   echo "CRONTAB REMOVED"
+  shift
 }
 
 [[ "$1" == "init" ]] && {

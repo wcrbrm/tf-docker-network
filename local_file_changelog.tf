@@ -2,6 +2,15 @@ resource "local_file" "changelog" {
    content = <<EOF
 #!/usr/bin/env bash
 
+#
+# this script looks through every running docker container of the project
+# to find if it has a reference to CHANGELOG.md in its labels
+# if so, it prints the content of the CHANGELOG.md
+#
+# requires JQ to be installed
+# Usage: ./bin/changelog.sh
+#
+
 export YELLOW='\033[0;33m'
 export NC='\033[0m'
 export P=$${PROJECT:-${var.project}}
