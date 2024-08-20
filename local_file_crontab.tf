@@ -1,5 +1,5 @@
 resource "local_file" "crontab" {
-   content = <<EOF
+  content         = <<EOF
 #!/usr/bin/env bash
 
 #
@@ -39,7 +39,7 @@ fi
 }
 
 EOF
-   filename = "./bin/crontab.sh"
-   file_permission = "0777"
+  filename        = "./bin/crontab.sh"
+  file_permission = "0777"
 }
 

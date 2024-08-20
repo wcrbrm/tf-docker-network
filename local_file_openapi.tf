@@ -1,5 +1,5 @@
 resource "local_file" "openapi" {
-   content = <<EOF
+  content         = <<EOF
 #!/usr/bin/env bash
 
 #
@@ -24,7 +24,7 @@ docker ps --filter label=project=$P --filter label=openapi.enable=true --format 
     echo
 done;
 EOF
-   filename = "./bin/openapi.sh"
-   file_permission = "0777"
+  filename        = "./bin/openapi.sh"
+  file_permission = "0777"
 }
 

@@ -1,5 +1,5 @@
 resource "local_file" "changelog" {
-   content = <<EOF
+  content         = <<EOF
 #!/usr/bin/env bash
 
 #
@@ -26,7 +26,7 @@ docker ps --filter label=project=$P --filter label=changelog.enable=true --forma
 done;
 
 EOF
-   filename = "./bin/changelog.sh"
-   file_permission = "0777"
+  filename        = "./bin/changelog.sh"
+  file_permission = "0777"
 }
 
